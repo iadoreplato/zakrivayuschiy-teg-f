@@ -11,6 +11,537 @@
 */
 
 .page {
+  margin: 0 auto;
+  font-family: var(--main-font-family);
+  background-image:
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: 'wght' var(--font-weight-text, 410);
+}
+
+.page__section {
+  width: var(--block-size);
+  margin: 0 auto;
+}
+
+.header {
+  margin-inline: auto;
+  margin-block: var(--header-margin-block);
+  border: 2px solid var(--accent-color);
+  padding-inline: var(--header-padding-inline);
+  padding-block: var(--header-padding-block);
+  font-family: var(--accent-font-family);
+  text-align: center;
+  text-transform: uppercase;
+  background-color: var(--main-color);
+}
+
+.header__title {
+  margin-block-end: 21px;
+  font-size: var(--header-title-font-size);
+  line-height: 0.95;
+}
+
+.header__subtitle {
+  font-size: var(--header-subtitle-font-size);
+  line-height: 1;
+}
+
+.section_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border: 2px solid var(--accent-color);
+  padding-block-end: 23px;
+  background-color: var(--main-color);
+}
+
+.card__title {
+  padding-inline-start: 10px;
+  padding-block-start: 6px;
+  padding-block-end: 7px;
+  font-weight: 715;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+@supports (font-variation-settings: 'wght' var(--font-weight-title)) {
+
+  .card__title {
+    font-variation-settings: 'wght' var(--font-weight-title);
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  border-block-start: 2px solid var(--accent-color);
+  border-block-end: 2px solid var(--accent-color);
+  overflow: hidden;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grayscale {
+  filter: grayscale(70%);
+}
+
+.bright {
+  filter: contrast(200%);
+}
+
+.blur {
+  filter: blur(0.1rem);
+}
+
+.saturate {
+  filter: saturate(200%);
+}
+
+.sepia {
+  filter: sepia(80%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(250deg);
+}
+
+.blur-saturate {
+  filter: blur(0.1rem) saturate(200%);
+}
+
+.image__label {
+  position: absolute;
+  display: block;
+  color: rgb(0 0 0 / 0.5);
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  text-transform: uppercase;
+  text-shadow:
+    1px 1px 0 var(--text-stroke-color),
+    -1px 1px 0 var(--text-stroke-color),
+    1px -1px 0 var(--text-stroke-color),
+    -1px -1px 0 var(--text-stroke-color);
+  inset-inline-end: 25px;
+  inset-block-start: 25px;
+  mix-blend-mode: hard-light;
+}
+
+@supports (text-stroke: 1px var(--text-stroke-color)) or
+  (-webkit-text-stroke: 1px var(--text-stroke-color)) {
+
+  .image__label {
+    text-shadow: none;
+    text-stroke: 1px var(--text-stroke-color);
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+  }
+}
+
+.card__article {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-inline: 25px;
+  padding-block-start: 25px;
+  padding-block-end: 23px;
+}
+
+.card:nth-of-type(2) {
+  padding-block-end: 23px;
+}
+
+.card:nth-of-type(2) .card__article {
+  padding-block-start: 24px;
+}
+
+.card:nth-of-type(3) .card__article {
+  padding-block-end: 22px;
+}
+
+.card:nth-of-type(4) .card__article {
+  padding-block-end: 2px;
+}
+
+.card:nth-of-type(6) .card__article {
+  padding-block-end: 1px;
+}
+
+.card:nth-of-type(8) .card__article {
+  padding-block-end: 43px;
+}
+
+.card__text {
+  font-size: 18px;
+  line-height: 1.162;
+  font-variation-settings: 'wght' var(--font-weight-text);
+}
+
+.button_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-inline: 25px;
+}
+
+.card__icon-button {
+  border: none;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent-color);
+  outline: none;
+}
+
+.like-icon {
+  padding-block-start: 4px;
+  transform-origin: center;
+}
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon:hover .core {
+  fill: var(--accent-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--accent-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  --contour-color: #f00;
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart 0.3s ease-in;
+  animation-delay: 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in;
+  animation-delay: 0.3s;
+}
+
+.card__like-button {
+  position: relative;
+  z-index: 0;
+  justify-self: flex-end;
+  border: 2px solid black;
+  padding-block: 7px;
+  overflow: hidden;
+  background-color: transparent;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  inline-size: 130px;
+}
+
+.card__like-button:focus {
+  outline: none;
+}
+
+.card__like-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  outline: none;
+}
+
+.card__like-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  transform-origin: left center;
+}
+
+.card__like-button:hover {
+  color: var(--main-color);
+  background-color: var(--main-color);
+}
+
+.card__like-button:hover::after {
+  transform: translateX(0);
+}
+
+.button__text {
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.section_save {
+  display: flex;
+  justify-content: center;
+  background-color: var(--main-color);
+}
+
+.save-button {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block-start: 50px;
+  margin-block-end: 100px;
+  padding-inline: 18px;
+  padding-block: 15px;
+  overflow: hidden;
+  background-color: transparent;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.save-button:focus {
+  outline: none;
+}
+
+.save-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  outline: none;
+}
+
+.save-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  transform-origin: left center;
+}
+
+.save-button:hover::after {
+  transform: translateX(0);
+}
+
+.save-button:hover {
+  color: var(--main-color);
+  background-color: var(--main-color);
+}
+
+.save-icon {
+  z-index: 1;
+  inline-size: 21px;
+  block-size: 21px;
+}
+
+.save-button:hover .button__text,
+.save-button:hover .save-icon {
+  position: relative;
+  z-index: 1;
+  fill: var(--main-color);
+  mix-blend-mode: difference;
+}
+
+.save-dialog {
+  width: 341px;
+  padding-inline: 40px;
+  padding-block: 30px;
+}
+
+.save-dialog[open] {
+  translate: 0;
+}
+
+.save-dialog[open]::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.container_save-dialog {
+  display: flex;
+  flex-shrink: 0;
+  gap: 20px;
+}
+
+.save-dialog__save-icon {
+  display: block;
+  flex-shrink: 0;
+  align-self: center;
+  margin-block-end: 0;
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.save-dialog__text {
+  min-width: 15ch;
+  line-height: 1.5;
+  text-align: start;
+  text-transform: uppercase;
+}
+
+.ok-button {
+  position: relative;
+  z-index: 0;
+  margin-block-start: 30px;
+  padding-inline: 116.5px;
+  padding-block: 12.5px;
+  overflow: hidden;
+  background-color: transparent;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.ok-button:focus {
+  outline: none;
+}
+
+.ok-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  outline: none;
+}
+
+.ok-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  transform-origin: left center;
+}
+
+.ok-button:hover::after {
+  transform: translateX(0);
+}
+
+.ok-button:hover {
+  color: var(--main-color);
+  background-color: var(--main-color);
+}
+
+@media (width <= 375px) {
+
+  .header__title {
+    margin-block-end: 23px;
+  }
+
+  .card {
+    padding-block-end: 23px;
+  }
+
+  .card__title {
+    max-width: 29ch;
+    padding-inline-start: 10px;
+    padding-block-start: 6px;
+    padding-block-end: 3px;
+    line-height: 1.19;
+  }
+
+  .image-container {
+    height: 375px;
+  }
+
+  .card__text {
+    line-height: 1.168;
+  }
+
+  .card__article {
+    padding-block-start: 25px;
+    padding-block-end: 23px;
+  }
+
+  .card:nth-of-type(2) .card__article {
+    padding-block-start: 24px;
+  }
+
+  .card:nth-of-type(4) .card__article {
+    padding-block-start: 24px;
+    padding-block-end: 2px;
+  }
+
+  .card:nth-of-type(5) .card__article {
+    padding-block-start: 24px;
+  }
+
+  .card:nth-of-type(6) .card__article {
+    padding-block-end: 1px;
+  }
+
+  .card:nth-of-type(8) .card__article {
+    padding-block-end: 44px;
+  }
+
+  .save-button {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding-inline: 19px;
+    padding-block-start: 15px;
+    padding-block-end: 16px;
+  }
+
+  .save-icon {
+    margin-block-end: 8px;
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
